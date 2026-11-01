@@ -1,8 +1,10 @@
-# E-commerce Playwright Automation
+# QA E-commerce Playwright Automation
 
-Professional browser QA framework for
-[SauceDemo](https://www.saucedemo.com/) using Playwright, TypeScript, and
-Playwright MCP for agent-assisted manual testing.
+Professional end-to-end QA automation portfolio for
+[SauceDemo](https://www.saucedemo.com/), built with Playwright and strict
+TypeScript. The project combines maintainable Page Objects, isolated
+cross-browser tests, centralized test data, and Playwright MCP-assisted
+exploration.
 
 ## Objectives
 
@@ -13,11 +15,12 @@ Playwright MCP for agent-assisted manual testing.
 - Produce actionable automated reports and structured manual execution records.
 - Provide a maintainable QA portfolio foundation.
 
-## Technology stack
+## Technologies and tools
 
 - Node.js LTS (20+)
 - TypeScript with strict compiler settings
 - Playwright Test
+- Playwright MCP
 - ESLint and Prettier
 - GitHub Actions
 
@@ -49,7 +52,7 @@ npm install
 npx playwright install
 ```
 
-## Test execution
+## Execution
 
 ```bash
 npm test                              # all browsers
@@ -58,6 +61,13 @@ npx playwright test tests/login      # focused directory
 npx playwright test --headed
 npm run test:ui
 npm run mcp                         # start the Playwright MCP server
+```
+
+Run the quality gates independently:
+
+```bash
+npx tsc --noEmit
+npm run lint
 ```
 
 ### Assisted manual execution
@@ -110,6 +120,19 @@ from source control.
 The Playwright MCP server is available through `npm run mcp` for agent-assisted
 browser exploration. It is restricted to the SauceDemo host.
 
+## Evidence
+
+The evidence capture process is documented in
+[`docs/evidence/README.md`](./docs/evidence/README.md). The repository does
+not include screenshots that were not actually captured and reviewed. When
+real evidence is added, it should be organized by execution session and linked
+from the relevant test or bug report.
+
+Confirmed `problem_user` findings are documented in
+[`docs/bug-reports.md`](./docs/bug-reports.md), including broken product
+images, ineffective price sorting, and unsuccessful cart removal. These are
+reproduction-based findings, not assumed defects.
+
 ## CI/CD
 
 `.github/workflows/playwright.yml` runs on pushes and pull requests. It:
@@ -122,9 +145,10 @@ browser exploration. It is restricted to the SauceDemo host.
 
 ## Automated coverage summary
 
-There are 31 scenarios per browser (93 project test executions):
+There are 33 scenarios per browser (99 project test executions):
 
-- Login: valid, invalid, empty, locked, problem, and performance-glitch users.
+- Login: valid, invalid username/password, empty fields, locked, problem, and
+  performance-glitch users.
 - Inventory: display, names/prices, four sorting modes, add, and remove.
 - Cart: access, product details, removal, continue shopping, and badge count.
 - Checkout: start, required fields, overview, totals, completion, and
@@ -150,6 +174,8 @@ not replace the automated cross-browser suite.
 - Browser binaries must be installed before the first local execution.
 - The project does not include API, database, accessibility, or visual
   regression testing.
+- The public `problem_user` account intentionally exposes product-specific
+  defects documented in [`docs/bug-reports.md`](./docs/bug-reports.md).
 
 ## Future improvements
 
@@ -164,3 +190,12 @@ not replace the automated cross-browser suite.
 The repository uses public SauceDemo demo accounts only. The shared password
 can be overridden with `SAUCE_PASSWORD`; do not commit real credentials,
 secrets, or API keys.
+
+## Suggested GitHub presentation
+
+**Repository description:** Cross-browser Playwright and TypeScript QA
+automation framework for SauceDemo e-commerce user journeys.
+
+**Suggested topics:** `playwright`, `typescript`, `test-automation`,
+`qa-automation`, `e2e-testing`, `saucedemo`, `page-object-model`,
+`cross-browser-testing`, `github-actions`.

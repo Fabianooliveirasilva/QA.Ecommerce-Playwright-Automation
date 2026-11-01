@@ -11,12 +11,11 @@ test.describe('Inventory', () => {
   });
 
   test('displays product names and prices', async ({ inventoryPage }) => {
-    await expect(inventoryPage.productCards.first()).toContainText(
-      products.backpack.name,
-    );
-    await expect(
-      inventoryPage.productCards.first().getByTestId('inventory-item-price'),
-    ).toHaveText('$29.99');
+    const actualNames = await inventoryPage.productNames();
+    const actualPrices = await inventoryPage.productPrices();
+
+    expect(actualNames).toEqual(catalog.map(({ name }) => name));
+    expect(actualPrices).toEqual(catalog.map(({ price }) => price));
   });
 
   test('sorts products by price from low to high', async ({
