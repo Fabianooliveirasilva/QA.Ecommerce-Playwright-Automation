@@ -5,6 +5,32 @@ automated or Playwright MCP-assisted executions. Do not add generated or
 placeholder screenshots and do not claim that evidence exists until the file
 has been captured and reviewed.
 
+## Exporting real screenshots
+
+### Playwright MCP-assisted sessions
+
+1. Capture the required checkpoint with the MCP screenshot action after the
+   expected visible result is present.
+2. Provide a repository-relative filename under `docs/evidence/<session>/`,
+   such as `LOGIN-01-login-success.png`.
+3. Confirm that the tool reports the file was saved, then inspect the image
+   before committing it.
+4. Add an `execution-notes.md` file beside the screenshot with the URL,
+   browser, account category, scenario ID, timestamp, and observed result.
+
+The MCP output path is not evidence by itself. Copy or save only the image
+that was actually captured into the repository evidence directory, and never
+rename a placeholder into an evidence file.
+
+### Playwright automated sessions
+
+Failure screenshots, videos, and traces are generated under
+`test-results/` according to `playwright.config.ts`. They are diagnostic
+artifacts and are ignored by Git. To publish one as reviewed evidence, first
+confirm the test result and artifact contents, then copy the specific real
+file into a named `docs/evidence/<session>/` directory and record its source
+test and commit. Do not publish an artifact merely because a path exists.
+
 ## Capture principles
 
 - Record the execution date, browser, environment URL, account type, and
@@ -86,4 +112,3 @@ Before linking evidence from the main documentation:
 3. Remove duplicate or obsolete captures.
 4. Update the relevant test or bug document if the evidence changes the
    observed result.
-

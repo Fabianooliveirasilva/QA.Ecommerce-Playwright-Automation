@@ -11,6 +11,7 @@ test.describe('Inventory', () => {
   });
 
   test('displays product names and prices', async ({ inventoryPage }) => {
+    await expect(inventoryPage.productCards).toHaveCount(catalog.length);
     const actualNames = await inventoryPage.productNames();
     const actualPrices = await inventoryPage.productPrices();
 

@@ -34,13 +34,17 @@ test.describe('Login', () => {
 
   test('rejects a username without a password', async ({ page, loginPage }) => {
     await loginPage.login(users.standard.username, '');
-    await expect(loginPage.errorMessage).toContainText('Password is required');
+    await expect(loginPage.errorMessage).toHaveText(
+      'Epic sadface: Password is required',
+    );
     await expect(page).toHaveURL(/\/$/);
   });
 
   test('rejects a password without a username', async ({ page, loginPage }) => {
     await loginPage.login('', users.standard.password);
-    await expect(loginPage.errorMessage).toContainText('Username is required');
+    await expect(loginPage.errorMessage).toHaveText(
+      'Epic sadface: Username is required',
+    );
     await expect(page).toHaveURL(/\/$/);
   });
 

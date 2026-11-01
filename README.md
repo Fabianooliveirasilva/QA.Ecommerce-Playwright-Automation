@@ -124,9 +124,11 @@ browser exploration. It is restricted to the SauceDemo host.
 
 The evidence capture process is documented in
 [`docs/evidence/README.md`](./docs/evidence/README.md). The repository does
-not include screenshots that were not actually captured and reviewed. When
-real evidence is added, it should be organized by execution session and linked
-from the relevant test or bug report.
+not include screenshots that were not actually captured and reviewed. The
+captured Firefox MCP session is documented in
+[`docs/evidence/2026-11-01-firefox-mcp/execution-notes.md`](./docs/evidence/2026-11-01-firefox-mcp/execution-notes.md),
+with real screenshots for login, inventory, cart, checkout, totals, and order
+confirmation.
 
 Confirmed `problem_user` findings are documented in
 [`docs/bug-reports.md`](./docs/bug-reports.md), including broken product
